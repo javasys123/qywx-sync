@@ -1,118 +1,113 @@
+# 企业微信配置示例
+# 复制此文件为 config.yaml 并填入真实的配置信息
+
 qywx:
-  send_mode: app
-  corp_id: wwfb5410f24c762bc3
-  corp_secret: U0XKAauf8Tm1hD5n42ZgTtnjRwOaryez2lym-EuVj3o
+  # 发送模式: app(应用消息)
+  send_mode: "app"
+
+  # 企业ID (在企业微信管理后台获取)
+  corp_id: "YOUR_CORP_ID"
+
+  # 应用密钥 (创建应用后获取)
+  corp_secret: "YOUR_CORP_SECRET"
+
+  # 应用ID (创建应用后获取)
   agent_id: 1000002
-  finance_secret: 1jmgmmu8IZrjOirTRtB-dhZo7T354spjgEPUzRr6lto
-  finance_private_key: '-----BEGIN RSA PRIVATE KEY-----
 
-    MIIEowIBAAKCAQEAlzYQLB5uaboCOY8XLudWm+Z9OOG8tgY0aOvYSaCBScRwJ4GG
+  # === 会话存档配置 ===
+  # 会话存档应用 Secret (从企业微信后台获取)
+  finance_secret: "YOUR_FINANCE_SECRET"
 
-    g+0aLovxdc/RdG2BeQnzjZ4vHdWqk2h/zJ4Yr4rTZZN8itRJAxmmHjRxOJFry7/P
+  # RSA 私钥 (用于解密会话存档消息)
+  # 请将私钥内容粘贴在这里,保持格式:
+  # finance_private_key: |
+  #   -----BEGIN RSA PRIVATE KEY-----
+  #   MIIE... (完整的私钥内容)
+  #   -----END RSA PRIVATE KEY-----
+  finance_private_key: "YOUR_RSA_PRIVATE_KEY"
 
-    /gitohV3QNKmhgoYtIFr31zToFBLXwz4MGHJ11UOjCW3bKGfDbIO92RehT8ncxRP
+  # === 回调配置 (用于接收消息) ===
+  callback_token: "YOUR_CALLBACK_TOKEN"
+  callback_aes_key: "YOUR_CALLBACK_AES_KEY"
+  callback_url: "https://your-domain.com/callback"
 
-    K3FX1uCSQ81pO/5BPj/3xkvYPGY+DY6Y/7+JJaWBiG6tfe7xMXlpnlfyYRHfg5tj
+  # 消息接收人 (企业微信账号,可以是多个)
+  # 格式: userid1|userid2|userid3
+  # 特殊值: @all 表示发送给所有人
+  touser: "@all"
 
-    ldrm8ZWCG02IW84g23yBwdUqrCeYXFSOBZ37F1k3RLiqgHtEelwj7AaX5PcB18G3
+  # API 地址
+  media_upload_url: "https://qyapi.weixin.qq.com/cgi-bin/media/upload"
+  message_send_url: "https://qyapi.weixin.qq.com/cgi-bin/message/send"
+  access_token_url: "https://qyapi.weixin.qq.com/cgi-bin/gettoken"
 
-    cf7oGwkpamXtPwzL7BJN6xZmC2Mjte3Q5u7RRwIDAQABAoIBADVrP4Zej9IhCOUt
-
-    tFp5FqNH54gfU2wYwA4q94N3RQV69MY4H33e1weHn9tneg8AGqPYjKbEsc9/6t1d
-
-    pvxyA7WMPUdetbpT6aFDP+jezPrXgPX/guqzRSgEHleTs4mZ6oVmTWYg5JB3nVDs
-
-    g4eQHF7KqTOApY6mgEq100y5tBytGlTJuaxeZFPjY91+e1ZP0ApqVLoyV5N+o1eP
-
-    KJe8KIOOkXOfcR3HWlbEe9XkS34LJAyFsuoVW9Q95DyRPbz9y9gRLG9VzHcAiyOv
-
-    zbS/Lv92X6oFx5EJ5nDGlbpD7b+u6i5nW6I10X8pkeleCcxxfC2CMfwPsOwPp3Bd
-
-    Ve6/W7UCgYEAzF7fzSdvjoo7YtZ1d8enB82Djmqg5r7lmUC7b0bwbqZAr+0ksj1S
-
-    IpT6/BLC+fs+tTrwwl94rjGnKvAq3I35skLqYLWEEjY/o2K3A9h8f7cPMU/7Zjek
-
-    okLp6U/VJmeOBRNgw2+yZFiuUoGrvz8g2EpydsadTOcvOxHex3Ns91sCgYEAvWk+
-
-    q3e/Jf5hazyC7fqxs25axo1+8xWTAu1cRQSA1qSqnePspUlPLeOhvkN7hgv6j4g4
-
-    WXy/iKARRpVRNQgIu+ishyeuOfMDBIY8JlofmXo/Rjtx2Fo54fKo2eDpUrYNzmrr
-
-    r7sCNWL0CPthlSmv08aeDJnPLCxoA/OlFZR3HYUCgYANMnMxREKn6bU8BK1BNttK
-
-    XbMJF0mcnOcmpk90OBh+jK3QrneYKu2K3iP28x80FU1PVqcFZjTcysgItcmOxHxD
-
-    Tp7j79S/eFFTs6Qt02T2ulN407lgOGehMsD4F/ejqzw4h6/P7v6ODEv1d/onN2Rf
-
-    ky8hDGJL/QHHxrekGYgH0QKBgCqdeD0p5vbMYey3o5mZcsu1A3VytmJIs1fQQZdB
-
-    qR8h00VM15xkfw0LDwP4uNzy6v/KHSt9FrbNlLV1uNyenyBv/Ak4k0l0dHRbI0NZ
-
-    uYxVZdEOZNHRkv5UE0taAATc8wRDKB3UjG2ogtFWhaECzQ1vvXWGUYdVwl1JPxY4
-
-    3gflAoGBAKkJiQoG/U55UvcGjEI4i9chxC+cqu97/daNoIPfgVUJv5O6GvRcJJx/
-
-    KAAf6yfngKM/e8IsIeX/9ui7OJLleg7BXonvJT1cYBRKysxhsDTqjsn4mspaiHxn
-
-    nuYm2kLYdqnR5YWBTCNGstSd/QvF/gnQDNd9eGTvTyPwQtcT6iNR
-
-    -----END RSA PRIVATE KEY-----
-
-    '
-  callback_token: DBiDTBB
-  callback_aes_key: BJVL0qPoxIzPrRbn7FJyp7MY1iLNyoCFocVEgtHeX0m
-  callback_url: https://qw.hzanfangtong.cn/callback
-  touser: '@all'
-  media_upload_url: https://qyapi.weixin.qq.com/cgi-bin/media/upload
-  message_send_url: https://qyapi.weixin.qq.com/cgi-bin/message/send
-  access_token_url: https://qyapi.weixin.qq.com/cgi-bin/gettoken
+# 存储配置
 storage:
-  base_path: ./downloads
-  image_path: ./downloads/images
-  video_path: ./downloads/videos
-  naming:
-    use_timestamp: true
-    prefix: note_
+  base_path: "./downloads"
+  # 自动清理(天) - 清理3天前的图片和视频文件
   auto_cleanup_days: 3
+
+# 调度器配置
+scheduler:
+  enabled: true
+  interval_seconds: 60  # 同步间隔(秒)
+  mode: interval        # 调度模式: interval(间隔) / cron(定时)
+  cron: "*/1 * * * *"   # Cron表达式(当mode为cron时使用)
+
+# 日志配置
 logging:
-  level: INFO
-  file: ./logs/sync.log
-  rotation: 10 MB
-  retention: 10 days
-  format: '{time:YYYY-MM-DD HH:mm:ss} | {level} | {message}'
+  level: "INFO"
+  file: "./logs/sync.log"
+  rotation: "10 MB"
+  retention: "10 days"
+  format: "{time:YYYY-MM-DD HH:mm:ss} | {level} | {message}"
+
+# 微信笔记处理配置
 wechat:
+  # 是否只处理笔记消息 (true: 只处理笔记, false: 处理所有消息类型)
   note_only: true
+
   image_types:
-  - .jpg
-  - .jpeg
-  - .png
-  - .gif
-  - .bmp
-  - .webp
+    - ".jpg"
+    - ".jpeg"
+    - ".png"
+    - ".gif"
+    - ".bmp"
+    - ".webp"
+
   video_types:
-  - .mp4
-  - .mov
-  - .avi
-  - .mkv
-  max_image_size: 20
-  max_video_size: 100
+    - ".mp4"
+    - ".mov"
+    - ".avi"
+    - ".mkv"
+
+  max_image_size: 20    # MB
+  max_video_size: 100   # MB
   image_quality: 85
   compress_video: false
+
+# 重试配置
 retry:
   max_attempts: 3
   delay_seconds: 5
   backoff_factor: 2
+
+# 网络配置
 network:
   timeout: 30
   verify_ssl: true
   proxy: null
+
+# 上传配置
 upload:
+  # 是否启用上传功能
   enabled: true
-  api_url: https://api.chaopaiclub.cn/wx-item-register/syncAddByContent
+
+  # API 接口地址
+  api_url: "https://your-api.com/upload"
+
+  # 请求超时时间(秒)
   timeout: 120
+
+  # 自动上传(同步后自动上传)
   auto_upload: true
-scheduler:
-  enabled: true
-  interval_seconds: 60
-  mode: interval
-  cron: '*/1 * * * *'
